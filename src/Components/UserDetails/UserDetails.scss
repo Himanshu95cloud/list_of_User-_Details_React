@@ -5,7 +5,6 @@
   align-items: center;
 
   .user_card {
-    margin: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     min-width: 250px;
     width: 20vw;
@@ -15,7 +14,7 @@
   }
   .imgclass {
     margin-top: 10px;
-    padding: 10px;
+    border-radius: 10px;
     border: 1px solid gray;
   }
 }
