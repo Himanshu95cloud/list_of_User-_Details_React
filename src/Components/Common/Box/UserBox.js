@@ -2,23 +2,36 @@ import React, { useEffect, useState } from "react";
 import "./UserBox.scss";
 import { getUserList } from "../../../ApiCalls/ApiCalls";
 import { Pagination } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function UserBox() {
   const [userList, setUsersList] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const [page, setPage] = useState(1);
+
+  const navigate = useNavigate();
   useEffect(() => {
-    getUserList()
+    getUserList(page)
       .then((response) => {
         setUsersList(response.data.data);
+        setTotalCount(response.data.total);
       })
       .catch((error) => {
         console.log(error);
-        // swal(error);
       });
-  }, []);
+  }, [page]);
 
   const handleSelection = (item) => {
+    navigate(`/UserInfo/${item}`);
     console.log("The link was clicked.", item);
   };
+
+  const handlePagination = (page) => {
+    setPage(page);
+    console.log("page", page);
+  };
+
   return (
     <div className="userBox">
       <h1>User List</h1>
@@ -49,7 +62,12 @@ function UserBox() {
         </div>
       ))}
       <div style={{ padding: "20px", marginTop: "10px" }}>
-        <Pagination defaultCurrent={1} total={50} />
+        <Pagination
+          pageSize={5}
+          onChange={(page) => handlePagination(page)}
+          defaultCurrent={page}
+          total={totalCount}
+        />
       </div>
     </div>
   );

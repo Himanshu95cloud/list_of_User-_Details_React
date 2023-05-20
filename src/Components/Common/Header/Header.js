@@ -1,15 +1,22 @@
 import React from "react";
 import { Menu } from "antd";
-// import "antd/dist/antd.css";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  function HandleClick() {
+    navigate(`/`);
+  }
   return (
-    <Menu mode="horizontal" theme="dark" breakpoint="md">
-      <Menu.Item key="home">Home</Menu.Item>
-      <Menu.Item key="destinations">Destinations</Menu.Item>
-      <Menu.Item key="blog">Blog</Menu.Item>
-      <Menu.Item key="contact">Contact</Menu.Item>
-    </Menu>
+    <>
+      <Menu mode="horizontal" theme="dark" breakpoint="md">
+        <Menu.Item onClick={HandleClick} key="home">
+          Home
+        </Menu.Item>
+      </Menu>
+      <Outlet />
+    </>
   );
 };
 

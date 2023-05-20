@@ -2,7 +2,6 @@ import axios from "axios";
 import { APPLICATION_JSON } from "./AppConstant";
 
 function makeHttpRequest({ path, body = {}, method }) {
-  // console.log("test9", method !== "GET" ? data : {});
   return axios({
     url: path,
     data: body,

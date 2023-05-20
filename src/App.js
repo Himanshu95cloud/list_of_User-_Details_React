@@ -1,21 +1,24 @@
 import React from "react";
 import UserInfo from "./Pages/Userinfo";
 import UserList from "./Pages/UserList";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Card from "antd/es/card/Card";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Components/Common/Header/Header";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Card className="App">
+      <div className="App">
         <Routes>
-          <Route path="/" element={<UserList />}></Route>
-          <Route path="/UserInfo" element={<UserInfo />}></Route>
+          <Route path="/" element={<Header />}>
+            <Route index element={<UserList />}></Route>
+            <Route
+              path="UserInfo"
+              element={<Navigate to="/" replace={true} />}
+            ></Route>
+            <Route path="UserInfo/:id" element={<UserInfo />}></Route>
+          </Route>
         </Routes>
-      </Card>
+      </div>
     </BrowserRouter>
   );
 }

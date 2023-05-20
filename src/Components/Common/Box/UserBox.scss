@@ -7,11 +7,12 @@
     margin: 10px;
     border-radius: 4px;
     display: flex;
-    padding: 10px;
+    padding: 15px;
     column-gap: 30px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     min-width: 250px;
-    width: 35vw;
+    width: 40vw;
+    cursor: pointer;
 
     .avtarBox {
       display: flex;
@@ -26,5 +27,7 @@
   .userTable {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    column-gap: 5px;
   }
 }
