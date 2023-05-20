@@ -6,7 +6,6 @@ import { Skeleton } from "antd";
 
 function UserDetails() {
   const params = useParams();
-  console.log("params", params);
   const [userDetails, setUserDetails] = useState({});
 
   useEffect(() => {
